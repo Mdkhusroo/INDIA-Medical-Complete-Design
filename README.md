@@ -1,1 +1,1 @@
-# INDIA-Medical-Complete-Design
+# INDIA-Medical-Design
