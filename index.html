@@ -160,12 +160,19 @@
             font-weight: 700;
         }
 
-        .about-pharmacy p {
+        .about-pharmacy p, .about-pharmacy ul {
             font-size: 1.125rem;
             color: #4a5568;
             line-height: 1.75;
             max-width: 700px;
             margin: 0 auto;
+            text-align: left; /* Align text left for bullet points */
+        }
+
+        .about-pharmacy ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 1rem;
         }
 
         /* --- Services Section (General Styling) --- */
@@ -319,7 +326,7 @@
                 font-size: 2rem;
             }
 
-            .about-pharmacy p,
+            .about-pharmacy p, .about-pharmacy ul,
             .services-section p {
                 font-size: 1rem;
             }
@@ -377,7 +384,7 @@
                 font-size: 1.75rem;
             }
 
-            .about-pharmacy p,
+            .about-pharmacy p, .about-pharmacy ul,
             .services-section p {
                 font-size: 0.9rem;
             }
@@ -405,7 +412,7 @@
                 <div class="flex flex-col items-center md:items-start space-y-4">
                 <div class="flex space-x-4">
                     <a href="#" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="WhatsApp">
-                       <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
                     </a>
                     <a href="#" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -416,8 +423,8 @@
                 </div>
                 </div>
                 <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
-                <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
-                <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+                <a href="./disclaimer.html" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+                <a href="./contact-us.html" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
             </nav>
             <button id="mobile-menu-toggle" class="md:hidden p-2 bg-gray-700 rounded" aria-expanded="false" aria-controls="mobile-menu">
                 <span class="material-icons" id="menu-icon">menu</span>
@@ -436,13 +443,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
                     <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 0 0 1 1-1h3z"/></svg>
                     </a>
                 </div>
             </div>
             <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
-            <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
-            <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+            <a href="./disclaimer.html" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+            <a href="./contact-us.html" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
         </div>
     </header>
 
@@ -469,8 +476,13 @@
     <section class="about-pharmacy" aria-labelledby="about-pharmacy-heading">
         <h2 id="about-pharmacy-heading">About INDIA Medical</h2>
         <p>
-            At INDIA Medical, we are committed to providing safe, reliable, and affordable health solutions. From prescription medicines to everyday health essentials, our expert team ensures you receive personalized care and support. Trust us for your health - quality, convenience, and compassion all in one place.
+            At INDIA Medical, we are committed to providing safe, reliable, and affordable health solutions. Our expert team ensures you receive personalized care and support. Trust us for your health - quality, convenience, and compassion all in one place.
         </p>
+        <ul class="mt-4 list-disc pl-5 mx-auto max-w-700px">
+            <li>Established in 1999: With over two decades of experience, we've been serving the community with dedication.</li>
+            <li>25 Years of Excellent Service: We're proud of our long-standing commitment to pharmaceutical excellence.</li>
+            <li>Bulk Medicine Supply: We also provide medicines in bulk quantities and large orders.</li>
+        </ul>
     </section>
 
     <section class="services-section text-center py-8">
@@ -479,22 +491,22 @@
     </section>
 
     <section class="cards-container" aria-label="Pharmacy services and features">
-        <a href="./privacy-policy.html" class="card" tabindex="0" aria-describedby="our-medicines-desc">
+        <a href="./our-medicines.html" class="card" tabindex="0" aria-describedby="our-medicines-desc">
             <span class="material-icons card-icon" aria-hidden="true">vaccines</span> 
             <p id="our-medicines-desc" class="card-text">Our Medicines</p>
         </a>
-        <a href="./privacy-policy.html" class="card" tabindex="0" aria-describedby="fast-service-desc">
+        <a href="./fast-home-delivery.html" class="card" tabindex="0" aria-describedby="fast-service-desc">
             <span class="material-icons card-icon" aria-hidden="true">local_shipping</span>
             <p id="fast-service-desc" class="card-text">Fast Home Delivery</p>
         </a>
-        <a href="./privacy-policy.html" class="card" tabindex="0" aria-describedby="best-medicines-desc">
+        <a href="./best-quality-medicines.html" class="card" tabindex="0" aria-describedby="best-medicines-desc">
             <span class="material-icons card-icon" aria-hidden="true">health_and_safety</span> <p id="best-medicines-desc" class="card-text">Best Quality Medicines</p>
         </a>
-        <a href="./privacy-policy.html" class="card" tabindex="0" aria-describedby="expertadvice-desc">
-          <span class="material-icons card-icon" aria-hidden="true">call</span>
+        <a href="./expert-pharmacist-advice.html" class="card" tabindex="0" aria-describedby="expertadvice-desc">
+            <span class="material-icons card-icon" aria-hidden="true">call</span>
             <p id="expertadvice-desc" class="card-text">Expert Pharmacist Advice</p>
         </a>
-        <a href="./privacy-policy.html" class="card" tabindex="0" aria-describedby="easy-order-desc">
+        <a href="./easy-ordering.html" class="card" tabindex="0" aria-describedby="easy-order-desc">
             <span class="material-icons card-icon" aria-hidden="true">smartphone</span>
             <p id="easy-order-desc" class="card-text">Easy Ordering</p>
         </a>
@@ -564,7 +576,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
                     <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 0 0 1 1-1h3z"/></svg>
                     </a>
                 </div>
                 <button class="flex items-center px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all shadow-md" aria-label="Location">

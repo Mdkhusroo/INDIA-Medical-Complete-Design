@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INDIA Medical - Fast Home Delivery</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Material Icons for various icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Inter font for consistent typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Custom CSS for the fixed "Order Now" button */
+        .order-now-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #065F46; /* A nice blue, you can adjust */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 9999px; /* Makes it fully rounded */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            text-decoration: none; /* Remove underline for links */
+        }
+
+        .order-now-btn:hover {
+            background-color: #1D4ED8; /* Darker blue on hover */
+        }
+
+        /* Styles for the Call to Action button */
+        .call-to-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #047857; /* A teal green */
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 2rem auto;
+            max-width: fit-content;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none; /* Ensure no underline for link */
+        }
+
+        .call-to-action:hover {
+            background-color: #065F46; /* Darker teal on hover */
+            transform: translateY(-2px);
+        }
+
+        .call-to-action .icon-call {
+            margin-right: 0.5rem;
+        }
+
+        /* Hero Section for Delivery Page */
+        .delivery-hero {
+            background-color: #f0fdf4; /* Light green background */
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .delivery-hero h1 {
+            font-size: 3rem;
+            color: #115E59;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .delivery-hero p {
+            font-size: 1.25rem;
+            color: #4a5568;
+            line-height: 1.75;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background-color: #f7fee7; /* Very light green */
+            margin: 2rem auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 900px;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #047857;
+            margin-bottom: 2rem;
+        }
+
+        /* Updated styles for how-it-works points */
+        .how-it-works-list {
+            list-style: none; /* Remove default list bullets */
+            padding: 0;
+            margin: 2rem auto 0 auto;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .how-it-works-list li {
+            display: flex;
+            align-items: flex-start; /* Align icon and text at the top */
+            margin-bottom: 1.5rem; /* Space between list items */
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .how-it-works-list li:last-child {
+            margin-bottom: 0; /* No margin after the last item */
+        }
+
+        .how-it-works-list li:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow on hover */
+        }
+
+        .how-it-works-list .material-icons {
+            font-size: 2.5rem; /* Size of the icon */
+            color: #065F46; /* Color of the icon */
+            margin-right: 1rem; /* Space between icon and text */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .how-it-works-list h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #115E59;
+            margin-bottom: 0.5rem;
+        }
+
+        .how-it-works-list p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            background-color: #e0f2fe; /* Light blue background */
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .why-choose-us h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item .material-icons {
+            font-size: 2rem;
+            color: #047857;
+        }
+
+        .feature-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background-color: #f0f9ff; /* Lightest blue */
+            margin: 2rem auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 900px;
+        }
+
+        .faq-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .faq-question {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e2e8f0;
+            display: none; /* Hidden by default */
+        }
+
+        /* --- Responsive adjustments for smaller screens --- */
+        @media (max-width: 768px) {
+            .order-now-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .delivery-hero h1 {
+                font-size: 2.5rem;
+            }
+            .delivery-hero p {
+                font-size: 1.1rem;
+            }
+
+            .how-it-works h2,
+            .why-choose-us h2,
+            .faq-section h2 {
+                font-size: 2rem;
+            }
+            
+            /* Responsive adjustments for how-it-works list */
+            .how-it-works-list .material-icons {
+                font-size: 2rem;
+            }
+            .how-it-works-list h3 {
+                font-size: 1.3rem;
+            }
+            .how-it-works-list p {
+                font-size: 1rem;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            .feature-item .material-icons {
+                font-size: 1.8rem;
+            }
+            .feature-item p {
+                font-size: 1rem;
+            }
+
+            .faq-question {
+                font-size: 1.05rem;
+            }
+            .faq-answer {
+                font-size: 0.95rem;
+            }
+
+            /* Mobile menu specific styles */
+            #mobile-menu {
+                width: 100%;
+                text-align: center;
+                background-color: #115E59;
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                position: absolute;
+                left: 0;
+                right: 0;
+                z-index: 999;
+            }
+
+            #mobile-menu a {
+                display: block;
+                padding: 0.5rem 1rem;
+                margin: 0.5rem 0;
+                color: white;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .delivery-hero h1 {
+                font-size: 2rem;
+            }
+            .delivery-hero p {
+                font-size: 0.95rem;
+            }
+
+            .how-it-works h2,
+            .why-choose-us h2,
+            .faq-section h2 {
+                font-size: 1.75rem;
+            }
+
+            /* Responsive adjustments for how-it-works list on smaller mobile */
+            .how-it-works-list .material-icons {
+                font-size: 1.8rem;
+            }
+            .how-it-works-list h3 {
+                font-size: 1.2rem;
+            }
+            .how-it-works-list p {
+                font-size: 0.9rem;
+            }
+
+
+            .feature-item .material-icons {
+                font-size: 1.6rem;
+            }
+            .feature-item p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans bg-gray-50">
+
+    <!-- Header section with logo, social media links, navigation, and mobile menu toggle -->
+    <header style="background-color: #115E59;" class="text-white py-4 px-4 md:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <!-- Logo with green accent -->
+                <a href="./index.html" class="text-3xl font-bold">INDIA<span class="text-green-500">MEDICAL</span></a>
+            </div>
+            <!-- Desktop navigation links and social media icons -->
+            <nav class="hidden md:flex space-x-4">
+                <div class="flex flex-col items-center md:items-start space-y-4">
+                <div class="flex space-x-4">
+                    <!-- WhatsApp Icon -->
+                    <a href="#" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
+                    </a>
+                    <!-- Instagram Icon (Lucide React SVG) -->
+                    <a href="#" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <!-- Facebook Icon (Lucide React SVG) -->
+                    <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+                </div>
+                <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
+                <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+                <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+            </nav>
+            <!-- Mobile menu toggle button -->
+            <button id="mobile-menu-toggle" class="md:hidden p-2 bg-gray-700 rounded" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="material-icons" id="menu-icon">menu</span>
+                <span class="material-icons hidden" id="close-icon">close</span>
+            </button>
+        </div>
+        
+        <!-- Mobile menu content (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center mt-2">
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <!-- WhatsApp Icon for mobile menu -->
+                    <a href="#" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
+                    </a>
+                    <!-- Instagram Icon for mobile menu -->
+                    <a href="#" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <!-- Facebook Icon for mobile menu -->
+                    <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
+            <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+            <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <!-- Call to Action button for ordering -->
+        <a href="tel:+91 9980543644" class="call-to-action" aria-label="Call or WhatsApp us to order">
+            <span class="material-icons icon-call" aria-hidden="true">call</span>
+            Call or WhatsApp Us to Order
+        </a>
+
+        <!-- Hero section for Delivery Page -->
+        <section class="delivery-hero" aria-labelledby="delivery-heading">
+            <h1 id="delivery-heading">Your Medicines, Delivered <span class="text-green-600">Fast & Safe</span></h1>
+            <p class="mt-4">
+                Experience the convenience of getting your essential medicines delivered right to your doorstep, quickly and reliably.
+                At INDIA Medical, we prioritize your health and time, ensuring your order reaches you with care and speed.
+            </p>
+            <div class="mt-8">
+                <!-- Placeholder image for delivery boy -->
+                <img src="./Images/Delivery-boy.jpg" alt="A drone delivering medicines to a house, emphasizing speed and safety" class="mx-auto rounded-lg shadow-lg max-w-full h-auto" />
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <!-- How Our Delivery Works section, now with points -->
+        <section class="how-it-works" aria-labelledby="how-it-works-heading">
+            <h2 id="how-it-works-heading">How Our Delivery Works</h2>
+            <ul class="how-it-works-list">
+                <!-- Step 1: Share Your Order -->
+                <li>
+                    <span class="material-icons" aria-hidden="true">description</span>
+                    <div>
+                        <h3>1. Share Your Order</h3>
+                        <p>Simply send us your prescription or a list of medicines via WhatsApp or call us directly. Our team is ready to assist!</p>
+                    </div>
+                </li>
+                <!-- Step 2: Confirm & Pay -->
+                <li>
+                    <span class="material-icons" aria-hidden="true">confirmation_number</span>
+                    <div>
+                        <h3>2. Confirm & Pay</h3>
+                        <p>We'll confirm your order, discuss pricing, and arrange a convenient payment method (Cash on Delivery or online payment).</p>
+                    </div>
+                </li>
+                <!-- Step 3: Get It Delivered -->
+                <li>
+                    <span class="material-icons" aria-hidden="true">delivery_dining</span>
+                    <div>
+                        <h3>3. Get It Delivered</h3>
+                        <p>Relax! Our dedicated delivery personnel will bring your medicines safely and swiftly to your home.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-us" aria-labelledby="why-choose-us-heading">
+            <h2 id="why-choose-us-heading">Why Choose INDIA Medical for Delivery?</h2>
+            <div class="feature-list">
+                <!-- Feature 1: Speed & Efficiency -->
+                <div class="feature-item">
+                    <span class="material-icons" aria-hidden="true">speed</span>
+                    <p>Unmatched Speed & Efficiency</p>
+                </div>
+                <!-- Feature 2: Free Delivery -->
+                <div class="feature-item">
+                    <span class="material-icons" aria-hidden="true">local_shipping</span>
+                    <p>Free Delivery Under 3 Kms</p>
+                </div>
+                <!-- Feature 3: Safety & Hygiene -->
+                <div class="feature-item">
+                    <span class="material-icons" aria-hidden="true">health_and_safety</span>
+                    <p>Guaranteed Safety & Hygiene</p>
+                </div>
+                <!-- Feature 4: Wide Coverage -->
+                <div class="feature-item">
+                    <span class="material-icons" aria-hidden="true">public</span>
+                    <p>Wide Coverage Area</p>
+                </div>
+                <!-- Feature 5: Customer Support -->
+                <div class="feature-item">
+                    <span class="material-icons" aria-hidden="true">support_agent</span>
+                    <p>Friendly Customer Support</p>
+                </div>
+                <!-- Feature 6: Reliable Service -->
+                <div class="feature-item">
+                    <span class="material-icons" aria-hidden="true">verified_user</span>
+                    <p>Reliable & Trustworthy Service</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <!-- FAQ Section with accordion functionality -->
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are your delivery hours?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Our delivery services operate from 9 AM to 9 PM, seven days a week.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a minimum order value for delivery?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, a minimum order value of ₹200 applies for home delivery services. However, delivery is **free** for orders within 3 kilometers of our location!
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What areas do you deliver to?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        We currently offer delivery services across Gulbarga, Karnataka. Please contact us for specific area coverage details.
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I track my order?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        Once your order is dispatched, you will receive an update via WhatsApp. You can also call our customer support for real-time tracking.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer section with logo, copyright, navigation, social media, and map -->
+    <footer style="background-color: #115E59;" class="text-white py-8 px-4 md:px-8 mt-12 rounded-t-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="text-3xl font-bold mb-2">INDIA<span class="text-green-500">MEDICAL</span></div>
+                <p class="text-sm text-gray-400">© 2024 INDIA Medical. All rights reserved.</p>
+            </div>
+
+            <nav class="flex flex-col items-center md:items-start space-y-3">
+                <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Privacy Policy</a>
+                <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Disclaimer</a>
+                <a href="#contact-us" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Contact Us</a>
+            </nav>
+
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <!-- WhatsApp Icon for footer -->
+                    <a href="#" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
+                    </a>
+                    <!-- Instagram Icon for footer -->
+                    <a href="#" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <!-- Facebook Icon for footer -->
+                    <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+                <!-- Location button with placeholder image -->
+                <button class="flex items-center px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all shadow-md" aria-label="Location">
+                    <img src="./Logo/Location-50.png" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mr-2"><path d="M12 2v20M18 10H6"/><circle cx="12" cy="12" r="10" />
+                    Our Location
+                </button>
+            </div>
+        </div>
+
+        <!-- Google Map iframe -->
+        <div class="mt-8 rounded-lg overflow-hidden shadow-lg">
+            <iframe
+                src="https://maps.google.com/maps?q=India%20Medical%20Gulbarga%20Karnataka%20India&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                class="w-full h-64 md:h-80 border-0"
+                aria-label="Map showing location of INDIA Medical in Gulbarga, Karnataka"
+                loading="lazy" allowfullscreen>
+                </iframe>
+        </div>
+    </footer>
+
+    <!-- Fixed "Order Now" button -->
+    <a href="tel:+91 9980543644" class="order-now-btn">
+        <span class="material-icons">call</span>
+        Order Now
+    </a>
+
+    <script>
+        // JavaScript for Mobile Menu functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            // Check if all necessary elements exist before adding event listeners
+            if (mobileMenuToggle && mobileMenu && menuIcon && closeIcon) {
+                mobileMenuToggle.addEventListener('click', (event) => {
+                    // Stop propagation to prevent document click listener from immediately closing the menu
+                    event.stopPropagation();
+                    const isMenuOpen = !mobileMenu.classList.contains('hidden'); 
+                    mobileMenu.classList.toggle('hidden'); // Toggle visibility of the mobile menu
+                    menuIcon.classList.toggle('hidden'); // Toggle visibility of the menu icon
+                    closeIcon.classList.toggle('hidden'); // Toggle visibility of the close icon
+                    mobileMenuToggle.setAttribute('aria-expanded', !isMenuOpen); // Update aria-expanded attribute for accessibility
+                });
+
+                // Close mobile menu when clicking outside of it
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenu.classList.contains('hidden') && // If menu is open
+                        !mobileMenu.contains(event.target) && // And click is not inside the menu
+                        !mobileMenuToggle.contains(event.target)) { // And click is not on the toggle button
+                        
+                        mobileMenu.classList.add('hidden'); // Hide the mobile menu
+                        menuIcon.classList.remove('hidden'); // Show the menu icon
+                        closeIcon.classList.add('hidden'); // Hide the close icon
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false'); // Update aria-expanded
+                    }
+                });
+
+                // Close mobile menu when a link inside it is clicked
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            menuIcon.classList.remove('hidden');
+                            closeIcon.classList.add('hidden');
+                            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+
+            } else {
+                // Log an error if essential elements are missing, to aid debugging
+                console.error("One or more mobile menu elements not found. Mobile menu functionality might be impaired.");
+            }
+
+            // JavaScript for FAQ Accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const expandIcon = item.querySelector('.expand-icon');
+
+                question.addEventListener('click', () => {
+                    const isOpen = answer.style.display === 'block';
+
+                    // Close all other open FAQ items to ensure only one is open at a time
+                    faqItems.forEach(otherItem => {
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherExpandIcon = otherItem.querySelector('.expand-icon');
+                        if (otherAnswer !== answer && otherAnswer.style.display === 'block') {
+                            otherAnswer.style.display = 'none';
+                            otherExpandIcon.style.transform = 'rotate(0deg)'; // Reset icon for closed items
+                        }
+                    });
+
+                    // Toggle the clicked FAQ item's answer visibility and rotate its icon
+                    answer.style.display = isOpen ? 'none' : 'block';
+                    expandIcon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

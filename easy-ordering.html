@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INDIA Medical - Easy Ordering | Order Medicines Online</title>
+    <meta name="description" content="Order medicines easily from INDIA Medical. Simple steps to send prescriptions via WhatsApp, call, or upload, confirm your order, and get fast home delivery in Gulbarga, Karnataka.">
+    <meta name="keywords" content="easy order, medicine ordering, online prescription, WhatsApp order, call to order, upload prescription, fast delivery, INDIA Medical, Gulbarga">
+    <meta name="author" content="INDIA Medical">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Custom CSS for the fixed "Order Now" button */
+        .order-now-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #065F46; /* A nice blue, you can adjust */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 9999px; /* Makes it fully rounded */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            text-decoration: none; /* Remove underline for links */
+        }
+
+        .order-now-btn:hover {
+            background-color: #1D4ED8; /* Darker blue on hover */
+        }
+
+        /* Styles for the Call to Action button */
+        .call-to-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #047857; /* A teal green */
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 2rem auto;
+            max-width: fit-content;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none; /* Ensure no underline for link */
+        }
+
+        .call-to-action:hover {
+            background-color: #065F46; /* Darker teal on hover */
+            transform: translateY(-2px);
+        }
+
+        .call-to-action .icon-call {
+            margin-right: 0.5rem;
+        }
+
+        /* Hero Section for Easy Ordering Page */
+        .ordering-hero {
+            background-color: #e0fdf4; /* Light green background, slightly different from delivery hero */
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .ordering-hero h1 {
+            font-size: 3rem;
+            color: #115E59;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .ordering-hero p {
+            font-size: 1.25rem;
+            color: #4a5568;
+            line-height: 1.75;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* How to Order Section - Similar to How It Works */
+        .how-to-order {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background-color: #f7fee7; /* Very light green */
+            margin: 2rem auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 900px;
+        }
+
+        .how-to-order h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #047857;
+            margin-bottom: 2rem;
+        }
+
+        .order-steps-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem auto 0 auto;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .order-steps-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .order-steps-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .order-steps-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .order-steps-list .material-icons {
+            font-size: 2.5rem;
+            color: #065F46;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .order-steps-list h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #115E59;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-steps-list p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Contact Options Section - New for Easy Ordering Page */
+        .contact-options {
+            background-color: #e0f2fe; /* Light blue background */
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-options h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none; /* For link items */
+            color: inherit; /* Inherit color for text */
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item .material-icons {
+            font-size: 3rem;
+            color: #047857;
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #115E59;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+            color: #4a5568;
+        }
+
+        /* FAQ Section - Reused from Delivery Page */
+        .faq-section {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background-color: #f0f9ff; /* Lightest blue */
+            margin: 2rem auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 900px;
+        }
+
+        .faq-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .faq-question {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e2e8f0;
+            display: none; /* Hidden by default */
+        }
+
+        /* --- Responsive adjustments for smaller screens --- */
+        @media (max-width: 768px) {
+            .order-now-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .ordering-hero h1 {
+                font-size: 2.5rem;
+            }
+            .ordering-hero p {
+                font-size: 1.1rem;
+            }
+
+            .how-to-order h2,
+            .contact-options h2,
+            .faq-section h2 {
+                font-size: 2rem;
+            }
+            
+            .order-steps-list .material-icons {
+                font-size: 2rem;
+            }
+            .order-steps-list h3 {
+                font-size: 1.3rem;
+            }
+            .order-steps-list p {
+                font-size: 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+            }
+            .contact-item .material-icons {
+                font-size: 2.5rem;
+            }
+            .contact-item h3 {
+                font-size: 1.2rem;
+            }
+            .contact-item p {
+                font-size: 0.95rem;
+            }
+
+            .faq-question {
+                font-size: 1.05rem;
+            }
+            .faq-answer {
+                font-size: 0.95rem;
+            }
+
+            /* Mobile menu specific styles */
+            #mobile-menu {
+                width: 100%;
+                text-align: center;
+                background-color: #115E59;
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                position: absolute;
+                left: 0;
+                right: 0;
+                z-index: 999;
+            }
+
+            #mobile-menu a {
+                display: block;
+                padding: 0.5rem 1rem;
+                margin: 0.5rem 0;
+                color: white;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ordering-hero h1 {
+                font-size: 2rem;
+            }
+            .ordering-hero p {
+                font-size: 0.95rem;
+            }
+
+            .how-to-order h2,
+            .contact-options h2,
+            .faq-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .order-steps-list .material-icons {
+                font-size: 1.8rem;
+            }
+            .order-steps-list h3 {
+                font-size: 1.2rem;
+            }
+            .order-steps-list p {
+                font-size: 0.9rem;
+            }
+
+            .contact-item .material-icons {
+                font-size: 2.2rem;
+            }
+            .contact-item h3 {
+                font-size: 1.1rem;
+            }
+            .contact-item p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans bg-gray-50">
+
+    <header style="background-color: #115E59;" class="text-white py-4 px-4 md:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="./index.html" class="text-3xl font-bold" aria-label="INDIA Medical Home">INDIA<span class="text-green-500">MEDICAL</span></a>
+            </div>
+            <nav class="hidden md:flex space-x-4" aria-label="Main Navigation">
+                <div class="flex flex-col items-center md:items-start space-y-4">
+                <div class="flex space-x-4">
+                    <a href="https://wa.me/919980543644" target="_blank" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="Chat with us on WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
+                    </a>
+                    <a href="https://www.instagram.com/indiamedical" target="_blank" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Follow us on Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/indiamedical" target="_blank" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Follow us on Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+                </div>
+                <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
+                <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+                <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+            </nav>
+            <button id="mobile-menu-toggle" class="md:hidden p-2 bg-gray-700 rounded" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle mobile menu">
+                <span class="material-icons" id="menu-icon">menu</span>
+                <span class="material-icons hidden" id="close-icon">close</span>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center mt-2">
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <a href="https://wa.me/919980543644" target="_blank" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="Chat with us on WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
+                    </a>
+                    <a href="https://www.instagram.com/indiamedical" target="_blank" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Follow us on Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/indiamedical" target="_blank" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Follow us on Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
+            <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+            <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <a href="tel:+919980543644" class="call-to-action" aria-label="Call or WhatsApp us to order">
+            <span class="material-icons icon-call" aria-hidden="true">call</span>
+            Call or WhatsApp Us to Order
+        </a>
+
+        <section class="ordering-hero" aria-labelledby="ordering-heading">
+            <h1 id="ordering-heading">Ordering Medicines Made <span class="text-green-600">Easy & Convenient</span></h1>
+            <p class="mt-4">
+                At INDIA Medical, we believe your health shouldn't wait. Our streamlined ordering process
+                ensures you get your essential medicines quickly, without any hassle. Choose your preferred
+                method and let us handle the rest!
+            </p>
+            <div class="mt-8">
+                <img src="./Images/Easy-ordering-medicines.jpg" alt="A person easily ordering medicines on a phone, emphasizing convenience." class="mx-auto rounded-lg shadow-lg max-w-full h-auto" title="Easy Medicine Ordering"/>
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <section class="how-to-order" aria-labelledby="how-to-order-heading">
+            <h2 id="how-to-order-heading">Simple Steps to Order Your Medicines</h2>
+            <ul class="order-steps-list">
+                <li>
+                    <span class="material-icons" aria-hidden="true">touch_app</span>
+                    <div>
+                        <h3>1. Choose Your Method</h3>
+                        <p>Select how you'd like to share your prescription or medicine list: WhatsApp, a quick call, or upload directly.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="material-icons" aria-hidden="true">send</span>
+                    <div>
+                        <h3>2. Share Your Requirements</h3>
+                        <p>Send us a clear photo of your prescription, a list of medicines, or simply tell us what you need over the phone.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="material-icons" aria-hidden="true">check_circle</span>
+                    <div>
+                        <h3>3. Confirmation & Payment</h3>
+                        <p>We'll verify your order, confirm availability and pricing, and guide you through secure payment options.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="material-icons" aria-hidden="true">local_shipping</span>
+                    <div>
+                        <h3>4. Get Fast Delivery</h3>
+                        <p>Sit back and relax! Our team will dispatch your order for quick and safe delivery to your doorstep.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <section class="contact-options" aria-labelledby="contact-options-heading">
+            <h2 id="contact-options-heading">Two Ways to Order</h2>
+            <p class="mb-8 text-lg text-gray-700">Choose the method that's most convenient for you:</p>
+            <div class="contact-grid">
+                <a href="https://wa.me/919980543644" target="_blank" class="contact-item" aria-label="Order via WhatsApp">
+                    <img src="./Logo/Green-whatsapp-icon.svg" alt="WhatsApp Icon" width="48" height="48" class="material-icons">
+                    <h3>Order on WhatsApp</h3>
+                    <p>Send your prescription or medicine list directly to our WhatsApp number for quick processing.</p>
+                </a>
+                <a href="tel:+919980543644" class="contact-item" aria-label="Order by Phone Call">
+                    <span class="material-icons">call</span>
+                    <h3>Order by Phone Call</h3>
+                    <p>Speak to our friendly customer support team to place your order or clarify any doubts.</p>
+                </a>
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-1">
+                        <span>Do I need a prescription to order medicines?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-1" role="region" aria-hidden="true">
+                        For prescription medicines, a valid prescription from a registered medical practitioner is required as per regulations. For over-the-counter (OTC) products, no prescription is needed.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-2">
+                        <span>What payment methods are available?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-2" role="region" aria-hidden="true">
+                        We accept Cash on Delivery (COD) and various online payment methods including UPI and bank transfers. Our team will guide you through the options when you place your order.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-3">
+                        <span>Can I modify or cancel my order after placing it?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-3" role="region" aria-hidden="true">
+                        Yes, you can modify or cancel your order, provided it has not yet been dispatched for delivery. Please contact our customer support immediately to make changes.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-4">
+                        <span>What if I can't find a specific medicine?</span>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-4" role="region" aria-hidden="true">
+                        Please contact us directly! Even if a medicine isn't listed, we might be able to source it for you or suggest an appropriate alternative.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="background-color: #115E59;" class="text-white py-8 px-4 md:px-8 mt-12 rounded-t-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="text-3xl font-bold mb-2">INDIA<span class="text-green-500">MEDICAL</span></div>
+                <p class="text-sm text-gray-400">© 2024 INDIA Medical. All rights reserved.</p>
+            </div>
+
+            <nav class="flex flex-col items-center md:items-start space-y-3" aria-label="Footer Navigation">
+                <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Privacy Policy</a>
+                <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Disclaimer</a>
+                <a href="#contact-us" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Contact Us</a>
+            </nav>
+
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <a href="https://wa.me/919980543644" target="_blank" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="Chat with us on WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24">
+                    </a>
+                    <a href="https://www.instagram.com/indiamedical" target="_blank" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Follow us on Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/indiamedical" target="_blank" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Follow us on Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+                <a href="http://googleusercontent.com/maps.google.com/3" target="_blank" class="flex items-center px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all shadow-md" aria-label="Find our location on Google Maps">
+                    <img src="./Logo/Location-50.png" width="20" height="20" alt="Location Pin Icon" class="mr-2">
+                    Our Location
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-8 rounded-lg overflow-hidden shadow-lg">
+            <iframe
+                src="https://maps.google.com/maps?q=India%20Medical%20Gulbarga%20Karnataka%20India&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                class="w-full h-64 md:h-80 border-0"
+                aria-label="Map showing location of INDIA Medical in Gulbarga, Karnataka"
+                loading="lazy" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </footer>
+
+    <a href="tel:+919980543644" class="order-now-btn" title="Call to Order Now">
+        <span class="material-icons">call</span>
+        Order Now
+    </a>
+
+    <script>
+        // JavaScript for Mobile Menu functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            // Check if all necessary elements exist before adding event listeners
+            if (mobileMenuToggle && mobileMenu && menuIcon && closeIcon) {
+                mobileMenuToggle.addEventListener('click', (event) => {
+                    // Stop propagation to prevent document click listener from immediately closing the menu
+                    event.stopPropagation();
+                    const isMenuOpen = !mobileMenu.classList.contains('hidden'); 
+                    mobileMenu.classList.toggle('hidden'); // Toggle visibility of the mobile menu
+                    menuIcon.classList.toggle('hidden'); // Toggle visibility of the menu icon
+                    closeIcon.classList.toggle('hidden'); // Toggle visibility of the close icon
+                    mobileMenuToggle.setAttribute('aria-expanded', !isMenuOpen); // Update aria-expanded attribute for accessibility
+                });
+
+                // Close mobile menu when clicking outside of it
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenu.classList.contains('hidden') && // If menu is open
+                        !mobileMenu.contains(event.target) && // And click is not inside the menu
+                        !mobileMenuToggle.contains(event.target)) { // And click is not on the toggle button
+                        
+                        mobileMenu.classList.add('hidden'); // Hide the mobile menu
+                        menuIcon.classList.remove('hidden'); // Show the menu icon
+                        closeIcon.classList.add('hidden'); // Hide the close icon
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false'); // Update aria-expanded
+                    }
+                });
+
+                // Close mobile menu when a link inside it is clicked
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            menuIcon.classList.remove('hidden');
+                            closeIcon.classList.add('hidden');
+                            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+
+            } else {
+                // Log an error if essential elements are missing, to aid debugging
+                console.error("One or more mobile menu elements not found. Mobile menu functionality might be impaired.");
+            }
+
+            // JavaScript for FAQ Accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const expandIcon = item.querySelector('.expand-icon');
+
+                question.addEventListener('click', () => {
+                    const isOpen = answer.style.display === 'block';
+
+                    // Close all other open FAQ items to ensure only one is open at a time
+                    faqItems.forEach(otherItem => {
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherExpandIcon = otherItem.querySelector('.expand-icon');
+                        if (otherAnswer !== answer && otherAnswer.style.display === 'block') {
+                            otherAnswer.style.display = 'none';
+                            otherExpandIcon.style.transform = 'rotate(0deg)'; // Reset icon for closed items
+                            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                            otherAnswer.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+
+                    // Toggle the clicked FAQ item's answer visibility and rotate its icon
+                    answer.style.display = isOpen ? 'none' : 'block';
+                    expandIcon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+                    question.setAttribute('aria-expanded', !isOpen); // Update aria-expanded for the clicked item
+                    answer.setAttribute('aria-hidden', isOpen); // Update aria-hidden for the clicked item
+                });
+
+                // Add keyboard accessibility for FAQ questions
+                question.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault(); // Prevent default scroll for spacebar
+                        question.click(); // Simulate a click
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

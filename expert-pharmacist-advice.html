@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INDIA Medical - Expert Pharmacist Advice</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Material Icons for various icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Inter font for consistent typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Custom CSS for the fixed "Order Now" button */
+        .order-now-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #065F46; /* A nice blue, you can adjust */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 9999px; /* Makes it fully rounded */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            text-decoration: none; /* Remove underline for links */
+        }
+
+        .order-now-btn:hover {
+            background-color: #1D4ED8; /* Darker blue on hover */
+        }
+
+        /* Styles for the Call to Action button */
+        .call-to-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #047857; /* A teal green */
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 2rem auto;
+            max-width: fit-content;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none; /* Ensure no underline for link */
+        }
+
+        .call-to-action:hover {
+            background-color: #065F46; /* Darker teal on hover */
+            transform: translateY(-2px);
+        }
+
+        .call-to-action .icon-call {
+            margin-right: 0.5rem;
+        }
+
+        /* Hero Section for Pharmacist Advice Page */
+        .advice-hero {
+            background-color: #f0f9ff; /* Light blue background */
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .advice-hero h1 {
+            font-size: 3rem;
+            color: #047857;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .advice-hero p {
+            font-size: 1.25rem;
+            color: #4a5568;
+            line-height: 1.75;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background-color: #f7fee7; /* Very light green */
+            margin: 2rem auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 900px;
+        }
+
+        .benefits-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #115E59;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            list-style: none; /* Remove default list styling */
+            padding: 0;
+        }
+
+        .benefit-item-point {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            display: flex;
+            align-items: flex-start; /* Align icon and text at the top */
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .benefit-item-point:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-item-point .material-icons {
+            font-size: 2.5rem; /* Smaller icon for list */
+            color: #065F46;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+            margin-top: 0.25rem; /* Adjust vertical alignment with text */
+        }
+
+        .benefit-item-point h3 {
+            font-size: 1.25rem; /* Smaller heading for list */
+            font-weight: 700;
+            color: #047857;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-item-point p {
+            font-size: 1rem; /* Smaller paragraph for list */
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* How to Get Advice Section */
+        .get-advice-section {
+            background-color: #e0f2fe; /* Light blue background */
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .get-advice-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 2rem;
+        }
+
+        .advice-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .method-item {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .method-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .method-item .material-icons {
+            font-size: 3rem;
+            color: #047857;
+            margin-bottom: 0.75rem;
+        }
+
+        .method-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        .method-item p {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-top: 0.5rem;
+        }
+
+        /* --- Responsive adjustments for smaller screens --- */
+        @media (max-width: 768px) {
+            .order-now-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .advice-hero h1 {
+                font-size: 2.5rem;
+            }
+            .advice-hero p {
+                font-size: 1.1rem;
+            }
+
+            .benefits-section h2,
+            .get-advice-section h2 {
+                font-size: 2rem;
+            }
+
+            .benefit-item-point .material-icons {
+                font-size: 2rem;
+            }
+            .benefit-item-point h3 {
+                font-size: 1.15rem;
+            }
+            .benefit-item-point p {
+                font-size: 0.95rem;
+            }
+
+            .method-item .material-icons {
+                font-size: 2.5rem;
+            }
+            .method-item h3 {
+                font-size: 1.1rem;
+            }
+
+            /* Mobile menu specific styles */
+            #mobile-menu {
+                width: 100%;
+                text-align: center;
+                background-color: #115E59;
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                position: absolute;
+                left: 0;
+                right: 0;
+                z-index: 999;
+            }
+
+            #mobile-menu a {
+                display: block;
+                padding: 0.5rem 1rem;
+                margin: 0.5rem 0;
+                color: white;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .advice-hero h1 {
+                font-size: 2rem;
+            }
+            .advice-hero p {
+                font-size: 0.95rem;
+            }
+
+            .benefits-section h2,
+            .get-advice-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .benefit-item-point .material-icons {
+                font-size: 1.8rem;
+            }
+            .benefit-item-point h3 {
+                font-size: 1.05rem;
+            }
+            .benefit-item-point p {
+                font-size: 0.9rem;
+            }
+
+            .method-item .material-icons {
+                font-size: 2rem;
+            }
+            .method-item h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans bg-gray-50">
+
+    <!-- Header section with logo, social media links, navigation, and mobile menu toggle -->
+    <header style="background-color: #115E59;" class="text-white py-4 px-4 md:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <!-- Logo with green accent -->
+                <a href="./index.html" class="text-3xl font-bold">INDIA<span class="text-green-500">MEDICAL</span></a>
+            </div>
+            <!-- Desktop navigation links and social media icons -->
+            <nav class="hidden md:flex space-x-4">
+                <div class="flex flex-col items-center md:items-start space-y-4">
+                <div class="flex space-x-4">
+                    <!-- WhatsApp Icon -->
+                    <a href="#" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24" onerror="this.onerror=null;this.src='https://placehold.co/24x24/000000/FFFFFF?text=WA'">
+                    </a>
+                    <!-- Instagram Icon (Lucide React SVG) -->
+                    <a href="#" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <!-- Facebook Icon (Lucide React SVG) -->
+                    <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+                </div>
+                <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
+                <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+                <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+            </nav>
+            <!-- Mobile menu toggle button -->
+            <button id="mobile-menu-toggle" class="md:hidden p-2 bg-gray-700 rounded" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="material-icons" id="menu-icon">menu</span>
+                <span class="material-icons hidden" id="close-icon">close</span>
+            </button>
+        </div>
+        
+        <!-- Mobile menu content (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center mt-2">
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <!-- WhatsApp Icon for mobile menu -->
+                    <a href="#" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24" onerror="this.onerror=null;this.src='https://placehold.co/24x24/000000/FFFFFF?text=WA'">
+                    </a>
+                    <!-- Instagram Icon for mobile menu -->
+                    <a href="#" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <!-- Facebook Icon for mobile menu -->
+                    <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all">Privacy Policy</a>
+            <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all">Disclaimer</a>
+            <a href="#contact-us" class="text-gray-300 hover:text-white transition-all">Contact Us</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <!-- Call to Action button for ordering -->
+        <a href="tel:+91 9980543644" class="call-to-action" aria-label="Call or WhatsApp us to order">
+            <span class="material-icons icon-call" aria-hidden="true">call</span>
+            Call or WhatsApp Us to Order
+        </a>
+
+        <!-- Hero section for Expert Pharmacist Advice -->
+        <section class="advice-hero" aria-labelledby="advice-heading">
+            <h1 id="advice-heading">Expert Pharmacist <span class="text-green-600">Advice at Your Fingertips</span></h1>
+            <p class="mt-4">
+                Have questions about your medications, health conditions, or general wellness?
+                Our experienced pharmacists are here to provide personalized and reliable advice,
+                ensuring you make informed decisions about your health.
+            </p>
+            <div class="mt-8">
+                <!-- Placeholder image for pharmacist advice -->
+                <img src="./Images/Pharmacist-advicing.jpg" alt="A pharmacist assisting a patient, symbolizing expert advice" class="mx-auto rounded-lg shadow-lg max-w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/800x400/E0F2FE/1A202C?text=Pharmacist+Advice'" />
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <!-- Benefits of Pharmacist Advice section -->
+        <section class="benefits-section" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading">Benefits of Our Pharmacist Advice</h2>
+            <ul class="benefit-list">
+                <!-- Benefit Point 1: Personalized Medication Guidance -->
+                <li class="benefit-item-point">
+                    <span class="material-icons" aria-hidden="true">medication</span>
+                    <div>
+                        <h3>Personalized Medication Guidance</h3>
+                        <p>Understand your prescriptions, dosage, side effects, and interactions for safe and effective use.</p>
+                    </div>
+                </li>
+                <!-- Benefit Point 2: Health & Wellness Consultations -->
+                <li class="benefit-item-point">
+                    <span class="material-icons" aria-hidden="true">healing</span>
+                    <div>
+                        <h3>Health & Wellness Consultations</h3>
+                        <p>Get advice on managing chronic conditions, lifestyle changes, and general health inquiries.</p>
+                    </div>
+                </li>
+                <!-- Benefit Point 3: Supplement & OTC Recommendations -->
+                <li class="benefit-item-point">
+                    <span class="material-icons" aria-hidden="true">local_pharmacy</span>
+                    <div>
+                        <h3>Supplement & OTC Recommendations</h3>
+                        <p>Receive expert recommendations on over-the-counter medicines and health supplements.</p>
+                    </div>
+                </li>
+                <!-- Benefit Point 4: Convenient & Accessible -->
+                <li class="benefit-item-point">
+                    <span class="material-icons" aria-hidden="true">support_agent</span>
+                    <div>
+                        <h3>Convenient & Accessible</h3>
+                        <p>Access professional advice easily via call or WhatsApp, from the comfort of your home.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+        <!-- How to Get Advice section -->
+        <section class="get-advice-section" aria-labelledby="get-advice-heading">
+            <h2 id="get-advice-heading">How to Get Expert Advice</h2>
+            <p>Connecting with our pharmacists for advice is simple and quick:</p>
+            <div class="advice-methods">
+                <!-- Method 1: Call Us -->
+                <div class="method-item">
+                    <span class="material-icons" aria-hidden="true">call</span>
+                    <h3>Call Us Directly</h3>
+                    <p>Speak to a pharmacist instantly for urgent queries or detailed discussions. <br> <span class="font-semibold text-green-700">Charges: ₹50 per consultation.</span></p>
+                </div>
+                <!-- Method 2: WhatsApp Us -->
+                <div class="method-item">
+                    <span class="material-icons" aria-hidden="true">chat</span>
+                    <h3>WhatsApp Your Questions</h3>
+                    <p>Send your queries, photos of prescriptions, or health concerns via WhatsApp. <br> <span class="font-semibold text-green-700">Charges: ₹30 per query.</span></p>
+                </div>
+                <!-- Method 3: Visit Our Store -->
+                <div class="method-item">
+                    <span class="material-icons" aria-hidden="true">store</span>
+                    <h3>Visit Our Store</h3>
+                    <p>For in-person consultations and a comprehensive health assessment. <br> <span class="font-semibold text-green-700">Charges: Free.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-200 max-w-xl mx-auto" />
+
+    </main>
+
+    <!-- Footer section with logo, copyright, navigation, social media, and map -->
+    <footer style="background-color: #115E59;" class="text-white py-8 px-4 md:px-8 mt-12 rounded-t-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="text-3xl font-bold mb-2">INDIA<span class="text-green-500">MEDICAL</span></div>
+                <p class="text-sm text-gray-400">© 2025 INDIA Medical. All rights reserved.</p>
+            </div>
+
+            <nav class="flex flex-col items-center md:items-start space-y-3">
+                <a href="./privacy-policy.html" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Privacy Policy</a>
+                <a href="#disclaimer" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Disclaimer</a>
+                <a href="#contact-us" class="text-gray-300 hover:text-white transition-all text-lg font-medium">Contact Us</a>
+            </nav>
+
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <h3 class="text-xl font-semibold mb-2">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <!-- WhatsApp Icon for footer -->
+                    <a href="#" class="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all shadow-md" aria-label="WhatsApp">
+                        <img src="./Logo/icons8-whatsapp.svg" alt="WhatsApp Icon" width="24" height="24" onerror="this.onerror=null;this.src='https://placehold.co/24x24/000000/FFFFFF?text=WA'">
+                    </a>
+                    <!-- Instagram Icon for footer -->
+                    <a href="#" class="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition-all shadow-md" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <!-- Facebook Icon for footer -->
+                    <a href="#" class="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-all shadow-md" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+                <!-- Location button with placeholder image -->
+                <button class="flex items-center px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all shadow-md" aria-label="Location">
+                    <img src="./Logo/Location-50.png" width="20" height="20" alt="Location Icon" class="mr-2" onerror="this.onerror=null;this.src='https://placehold.co/20x20/000000/FFFFFF?text=Loc'">
+                    Our Location
+                </button>
+            </div>
+        </div>
+
+        <!-- Google Map iframe -->
+        <div class="mt-8 rounded-lg overflow-hidden shadow-lg">
+            <iframe
+                src="https://maps.google.com/maps?q=India%20Medical%20Gulbarga%20Karnataka%20India&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                class="w-full h-64 md:h-80 border-0"
+                aria-label="Map showing location of INDIA Medical in Gulbarga, Karnataka"
+                loading="lazy" allowfullscreen>
+                </iframe>
+        </div>
+    </footer>
+
+    <!-- Fixed "Order Now" button -->
+    <a href="tel:+91 9980543644" class="order-now-btn">
+        <span class="material-icons">call</span>
+        Order Now
+    </a>
+
+    <script>
+        // JavaScript for Mobile Menu functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            // Check if all necessary elements exist before adding event listeners
+            if (mobileMenuToggle && mobileMenu && menuIcon && closeIcon) {
+                mobileMenuToggle.addEventListener('click', (event) => {
+                    // Stop propagation to prevent document click listener from immediately closing the menu
+                    event.stopPropagation();
+                    const isMenuOpen = !mobileMenu.classList.contains('hidden'); 
+                    mobileMenu.classList.toggle('hidden'); // Toggle visibility of the mobile menu
+                    menuIcon.classList.toggle('hidden'); // Toggle visibility of the menu icon
+                    closeIcon.classList.toggle('hidden'); // Toggle visibility of the close icon
+                    mobileMenuToggle.setAttribute('aria-expanded', !isMenuOpen); // Update aria-expanded attribute for accessibility
+                });
+
+                // Close mobile menu when clicking outside of it
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenu.classList.contains('hidden') && // If menu is open
+                        !mobileMenu.contains(event.target) && // And click is not inside the menu
+                        !mobileMenuToggle.contains(event.target)) { // And click is not on the toggle button
+                        
+                        mobileMenu.classList.add('hidden'); // Hide the mobile menu
+                        menuIcon.classList.remove('hidden'); // Show the menu icon
+                        closeIcon.classList.add('hidden'); // Hide the close icon
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false'); // Update aria-expanded
+                    }
+                });
+
+                // Close mobile menu when a link inside it is clicked
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            menuIcon.classList.remove('hidden');
+                            closeIcon.classList.add('hidden');
+                            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+
+            } else {
+                // Log an error if essential elements are missing, to aid debugging
+                console.error("One or more mobile menu elements not found. Mobile menu functionality might be impaired.");
+            }
+        });
+    </script>
+</body>
+</html>
